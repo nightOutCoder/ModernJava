@@ -12,7 +12,7 @@ public class VariableScope {
 		int k =0;
 		List<Instructor> instructors = Instructors.getAll();
 		instructors.forEach(data ->{
-			System.out.println(k++); //Local variable k defined in an enclosing scope must be final or effectively final
+		//	System.out.println(k++); //Local variable k defined in an enclosing scope must be final or effectively final
 		});
 		k = k-1; // compilation error
 		
