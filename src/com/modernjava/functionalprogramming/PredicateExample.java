@@ -1,5 +1,6 @@
 package com.modernjava.functionalprogramming;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.BiConsumer;
 import java.util.function.BiPredicate;
@@ -7,6 +8,7 @@ import java.util.function.DoublePredicate;
 import java.util.function.IntPredicate;
 import java.util.function.LongPredicate;
 import java.util.function.Predicate;
+
 
 public class PredicateExample {
 	public static void main(String arg[]) {
@@ -88,6 +90,25 @@ public class PredicateExample {
 		});
 		
 
+		Predicate<Integer> ages = (data) -> data % 2 == 0;
+		List<Integer> inputData = new ArrayList<>();
+		inputData.add(20);
+		inputData.add(21);
+		inputData.add(24);
+		inputData.add(25);
+		System.out.println(inputData);
+		inputData.removeIf(ages);
+		System.out.println(inputData);
+		
+
+		// isEqual - It takes Object as an argument
+		Predicate<Integer> isEqualRef = Predicate.isEqual(101);
+		boolean result = isEqualRef.test(101);
+		System.out.println(result);
+		result = isEqualRef.negate().test(101);
+		System.out.println(result);
+		result = isEqualRef.and(data -> data > 100).test(101);
+		System.out.println(result);
 	}
 
 }
