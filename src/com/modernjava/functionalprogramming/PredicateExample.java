@@ -9,7 +9,17 @@ import java.util.function.IntPredicate;
 import java.util.function.LongPredicate;
 import java.util.function.Predicate;
 
-
+/* 
+public interface java.util.function.Predicate<T> {
+	abstract boolean test(T);
+	default java.util.function.Predicate<T> and(java.util.function.Predicate<? super T>);
+	default java.util.function.Predicate<T> negate();
+	default java.util.function.Predicate<T> or(java.util.function.Predicate<? super T>);
+	static <T> java.util.function.Predicate<T> isEqual(java.lang.Object);
+	static <T> java.util.function.Predicate<T> not(java.util.function.Predicate<? super T>);
+ }
+*/
+ 
 public class PredicateExample {
 	public static void main(String arg[]) {
 		
@@ -74,6 +84,14 @@ public class PredicateExample {
 		
 		/* BiPredicate Functional Interface */
 	
+		/* 
+		public interface java.util.function.BiPredicate<T, U> {
+			abstract boolean test(T, U);
+			default java.util.function.BiPredicate<T, U> and(java.util.function.BiPredicate<? super T, ? super U>);
+			default java.util.function.BiPredicate<T, U> negate();
+			default java.util.function.BiPredicate<T, U> or(java.util.function.BiPredicate<? super T, ? super U>);
+		 }
+		*/
 		System.out.println("---------------------------------------------------------------------------");
 		BiPredicate<Integer,Integer> dataInput = (a,b) -> a==0 && b > 2;
 		System.out.println(dataInput.test(0,4));

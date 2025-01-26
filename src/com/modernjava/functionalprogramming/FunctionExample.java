@@ -16,8 +16,28 @@ import java.util.function.LongUnaryOperator;
 import java.util.function.Predicate;
 import java.util.function.UnaryOperator;
 
+/*
+*
+public interface java.util.function.Function<T, R> {
+	abstract R apply(T);
+	default <V> java.util.function.Function<V, R> compose(java.util.function.Function<? super V, ? extends T>);
+	default <V> java.util.function.Function<T, V> andThen(java.util.function.Function<? super R, ? extends V>);
+	static <T> java.util.function.Function<T, T> identity();
+ }
+*
+*/
+ 
 public class FunctionExample {
 	public static void main(String arg[]) {
+
+		Function<String, Integer> numerRef = (data) -> Integer.parseInt(data);
+		int numberRefResult = numerRef.apply("101");
+		System.out.println(numberRefResult);
+
+		Function<Integer, String> ref = (data) -> String.valueOf(data);
+		String sRef = ref.apply(102);
+		System.out.println(sRef);
+
 		/* Double is the Return value argument */
 		Function<Integer, Double> sqrt = (n) -> Math.sqrt(n);
 		System.out.println("Square Root is "+sqrt.apply(81));
@@ -28,10 +48,16 @@ public class FunctionExample {
 		
 		/* Lower case and then concat */
 		Function<String, String> concate = (s) -> s.concat(" Swamy");
-		System.out.println("Lower Case "+lowerCase.andThen(concate).apply("KUMAR"));
+		System.out.println("Lower Case "+lowerCase.andThen(concate).apply("KUMAR2"));
 		
 		/* First compose and then apply Function */
 		System.out.println(lowerCase.compose(concate).apply("KUMAR"));
+
+
+		/* identity */
+		Function<String, String> identityString = Function.identity(); /* similar as : (data) -> data */
+		String identityStringRef = identityString.apply("TEST West");
+		System.out.println(identityStringRef);
 		System.out.println("---------------------------------------------------------------------------");
 		
 		
@@ -85,6 +111,14 @@ public class FunctionExample {
 		
 		
 		/* BiFunction Interface */
+
+		/* 
+		public interface java.util.function.BiFunction<T, U, R> {
+			abstract R apply(T, U);
+			default <V> java.util.function.BiFunction<T, U, V> andThen(java.util.function.Function<? super R, ? extends V>);
+		 }
+		*/
+
 		// BiFunction takes 2 input - List<Instructor>, Predicate which filter instructor having online courses
 		// Return map<String, Name> - String is the name, Integer is the years of experience
 		
@@ -105,7 +139,22 @@ public class FunctionExample {
 		System.out.println("---------------------------------------------------------------------------");
 		
 		
+
+
 		// UnaryOperator Example 
+		/*
+		It is sub type of Function, here Return type is same as input type
+		we already having other function but here UnaryOperator having its own Identity()
+		Note - Static method in a interface can not be inherited to the sub type. Idenityh() in Function is static that's why 
+		UnaryOperator having its own Identiy()
+		*/
+
+		/*
+		public interface java.util.function.UnaryOperator<T> extends java.util.function.Function<T, T> {
+			static <T> java.util.function.UnaryOperator<T> identity();
+		}
+		*/
+
 		UnaryOperator<Integer> unaryOperator = a -> a * 10;
 		System.out.println(unaryOperator.apply(101));
 		
