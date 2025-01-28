@@ -2,6 +2,12 @@ package com.modernjava.functionalprogramming;
 
 import java.util.function.Consumer;
 
+/* 
+public interface java.util.function.Consumer<T> {
+	abstract void accept(T);
+	default java.util.function.Consumer<T> andThen(java.util.function.Consumer<? super T>);
+ }
+*/
 public class ConsumerExample {
 	public static void main(String a[]) {
 		Consumer<String> c = (x) -> System.out.println(x.length());

@@ -25,6 +25,14 @@ public class ConsumerExample3 {
 		
 		
 		/*********** BiConsumer Example ***********/
+
+		/* 
+		public interface java.util.function.BiConsumer<T, U> {
+			abstract void accept(T, U);
+			default java.util.function.BiConsumer<T, U> andThen(java.util.function.BiConsumer<? super T, ? super U>);
+		 }
+		*/
+
 		System.out.println("---------------------------------------------------------------------------");
 		//Printing two numbers
 		BiConsumer<Integer,Integer> biConsumer1 = (a,b) -> System.out.println("First is = "+a+" and Second is = "+b);

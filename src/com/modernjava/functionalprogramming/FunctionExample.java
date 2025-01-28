@@ -169,7 +169,17 @@ public class FunctionExample {
 		System.out.println("---------------------------------------------------------------------------");
 		
 		
-		// BinaryOperator Example 
+		// BinaryOperator Example - it extends BiFunction
+		// apply & andThen function inherited from BiFunction to BinaryOperator
+		// It is used when all type should be same - Two input type and return type
+
+		/* 
+		public interface java.util.function.BinaryOperator<T> extends java.util.function.BiFunction<T, T, T> {
+			static <T> java.util.function.BinaryOperator<T> minBy(java.util.Comparator<? super T>);
+			static <T> java.util.function.BinaryOperator<T> maxBy(java.util.Comparator<? super T>);
+		 }
+		*/
+		 
 		
 		/*Sum of two numbers*/
 		BinaryOperator<Integer> binaryhOperator = (a,b) -> a+b;
