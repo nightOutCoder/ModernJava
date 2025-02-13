@@ -3,6 +3,7 @@ package com.modernjava.streams;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 import java.util.stream.Stream;
 
@@ -63,8 +64,20 @@ public class Demo1 {
          results.forEach(System.out::println);
 
          System.out.println("------------reduce terminal example ---------------");
-         List<Integer> dataResult = Arrays.asList(112,113,114);
+         List<Integer> dataResult = Arrays.asList(12,10,2);
          int sumResult = dataResult.stream().reduce(0,(a,b) -> (a+b));
          System.out.println(sumResult);
+         int sumResult1 = dataResult.stream().reduce(0,Integer::sum);
+         System.out.println(sumResult1);
+         int sumResult2 = dataResult.stream().reduce(1,(a,b) -> a*b);
+         System.out.println(sumResult2);
+         int sumResult3 = dataResult.stream().reduce((a,b) -> b).orElse(-1); // Return last value. And Return -1 in case stream is empty
+         System.out.println(sumResult3);
+         Optional<Integer> mySum = dataResult.stream().reduce((a,b) -> a+b); /* In this case there is no offset */
+         mySum.ifPresent(System.out::println);
+         Optional<Integer> mynum1 = dataResult.stream().findFirst();
+         mynum1.ifPresent(System.out::println);
+         Optional<Integer> mynum2 = dataResult.stream().findAny();
+         mynum2.ifPresent(System.out::println);
     }
 }
